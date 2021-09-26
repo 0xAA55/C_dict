@@ -1,0 +1,13 @@
+*.a
+*.o
+*.bat
+*.exe
+*.txt
+*.sln
+*.sdf
+*.suo
+*.opensdf
+*.filters
+*.user
+msvc/.vs/
+msvc/intermediate/

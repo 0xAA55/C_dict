@@ -78,7 +78,7 @@ dict_p dict_create();
 // 函数：设置字典的哈希函数
 // 描述：成功返回hs_ok，失败返回其它值。
 //=============================================================================
-dict_status dict_set_hash_func (dict_p dict, hash_func hash_func);
+dict_status dict_set_hash_func(dict_p dict, hash_func hash_func);
 
 //=============================================================================
 // 函数：取得字典的哈希函数

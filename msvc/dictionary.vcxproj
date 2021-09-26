@@ -81,30 +81,30 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)..\lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)intermediate\$(PlatformTarget)_$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)..\..\;$(ProjectDir)..\..\common\inc\;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)..\lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)intermediate\$(PlatformTarget)_$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)..\..\;$(ProjectDir)..\..\common\inc\;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)..\lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)intermediate\$(PlatformTarget)_$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)..\..\;$(ProjectDir)..\..\common\inc\;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)..\lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)lib\msvc\$(PlatformTarget)_$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)intermediate\$(PlatformTarget)_$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)..\..\;$(ProjectDir)..\..\common\inc\;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

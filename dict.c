@@ -358,7 +358,7 @@ dict_status dict_insert
 dict_status dict_assign
 (
 	dict_p dict,
-	void *key,
+	const void *key,
 	void *value
 )
 {

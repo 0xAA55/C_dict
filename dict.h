@@ -157,7 +157,7 @@ on_delete_value dict_get_on_delete_value(dict_p dict);
 dict_status dict_insert
 (
 	dict_p dict,
-	void *key,
+	const void *key,
 	void *value
 );
 
@@ -170,7 +170,7 @@ dict_status dict_insert
 dict_status dict_assign
 (
 	dict_p dict,
-	void *key,
+	const void *key,
 	void *value
 );
 

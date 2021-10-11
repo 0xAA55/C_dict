@@ -208,6 +208,18 @@ on_delete_value dict_get_on_delete_value(dict_p dict)
 	return dict->on_delete_value;
 }
 
+static size_t fold_hash(hash_t hash, int bit_count)
+{
+	size_t r = (size_t)1 << bit_count;
+	size_t m = r - 1;
+	if (!m || !r) return hash;
+	while (hash >= r)
+	{
+		hash = (hash >> bit_count) ^ (hash & m);
+	}
+	return hash;
+}
+
 static void free_buckets(dict_bucket_p buckets, int bucket_bit_count)
 {
 	dict_bucket_p bucket;
@@ -230,8 +242,7 @@ static void free_buckets(dict_bucket_p buckets, int bucket_bit_count)
 
 static dict_status add_to_buckets(dict_bucket_p buckets, int bucket_bit_count, compare_func cp, hash_t hash, void *key, void *value, size_t *collision_counter)
 {
-	size_t bucket_size = (size_t)1 << bucket_bit_count;
-	size_t hashed_index = hash & (bucket_size - 1);
+	size_t hashed_index = fold_hash(hash, bucket_bit_count);
 	dict_bucket_p bucket = &buckets[hashed_index];
 
 	// 检查是撞哈希还是key已经存在
@@ -375,7 +386,6 @@ dict_status dict_assign
 dict_bucket_p dict_search_bucket(dict_p dict, const void *key)
 {
 	hash_t hash;
-	size_t bucket_size;
 	size_t hashed_index;
 	dict_internal_p in;
 	dict_bucket_p bucket;
@@ -384,8 +394,7 @@ dict_bucket_p dict_search_bucket(dict_p dict, const void *key)
 
 	in = dict->internal;
 	hash = in->hash_func(key);
-	bucket_size = (size_t)1 << dict->bucket_bit_count;
-	hashed_index = hash & (bucket_size - 1);
+	hashed_index = fold_hash(hash, dict->bucket_bit_count);
 	bucket = &dict->buckets[hashed_index];
 
 	do
@@ -407,7 +416,6 @@ void *dict_search(dict_p dict, const void *key)
 dict_status dict_remove(dict_p dict, const void *key)
 {
 	hash_t hash;
-	size_t bucket_size;
 	size_t hashed_index;
 	dict_internal_p in;
 	dict_bucket_p bucket;
@@ -416,8 +424,7 @@ dict_status dict_remove(dict_p dict, const void *key)
 
 	in = dict->internal;
 	hash = in->hash_func(key);
-	bucket_size = (size_t)1 << dict->bucket_bit_count;
-	hashed_index = hash & (bucket_size - 1);
+	hashed_index = fold_hash(hash, dict->bucket_bit_count);
 	bucket = &dict->buckets[hashed_index];
 
 	if (!bucket->key) return ds_keynotfound;

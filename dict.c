@@ -210,10 +210,9 @@ on_delete_value dict_get_on_delete_value(dict_p dict)
 
 static size_t fold_hash(hash_t hash, int bit_count)
 {
-	size_t r = (size_t)1 << bit_count;
-	size_t m = r - 1;
-	if (!m || !r) return hash;
-	while (hash >= r)
+	size_t m = ((size_t)1 << bit_count) - 1;
+	if (!m) return 0;
+	while (hash > m)
 	{
 		hash = (hash >> bit_count) ^ (hash & m);
 	}

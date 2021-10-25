@@ -20,16 +20,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\dict.c" />
+    <ClCompile Include="..\dictcfg.c" />
+    <ClCompile Include="..\logprintf.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\dict.h" />
+    <ClInclude Include="..\dictcfg.h" />
+    <ClInclude Include="..\logprintf.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\makefile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{F19DE39E-3A11-4D08-A39A-D331D23D04ED}</ProjectGuid>
+    <ProjectGuid>{9BCB7EDA-FEBE-40F9-883E-617D2F5B3806}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>dictionary</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>

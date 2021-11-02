@@ -5,6 +5,10 @@
 #include<stdlib.h>
 #include<string.h>
 
+#ifdef _MSC_VER
+#define strcasecmp stricmp
+#endif
+
 static void dictcfg_section_remove(void *value)
 {
 	dict_delete(value);
@@ -111,6 +115,7 @@ dict_p dictcfg_load(const char *cfg_path, FILE *fp_log)
 
 			ch3 = strchr(ch2, '#'); if (ch3) *ch3 = '\0';
 			ch3 = strchr(ch2, ';'); if (ch3) *ch3 = '\0';
+			ch3 = strchr(ch2, '\r'); if (ch3) *ch3 = '\0';
 			ch3 = strchr(ch2, '\n'); if (ch3) *ch3 = '\0';
 			ch2 = AllocCopy(ch2);
 			if (!ch2)
@@ -176,9 +181,9 @@ int dictcfg_getbool(dict_p section, const char *key, int def)
 {
 	char *val = dict_search(section, key);
 	if (!val) return def;
-	if (!stricmp(val, "yes")) return 1;
-	if (!stricmp(val, "true")) return 1;
-	if (!stricmp(val, "no")) return 0;
-	if (!stricmp(val, "false")) return 0;
+	if (!strcasecmp(val, "yes")) return 1;
+	if (!strcasecmp(val, "true")) return 1;
+	if (!strcasecmp(val, "no")) return 0;
+	if (!strcasecmp(val, "false")) return 0;
 	return -1;
 }

@@ -111,7 +111,7 @@ dict_p dictcfg_load(const char *cfg_path, FILE *fp_log)
 				goto FailExit;
 			}
 			*ch2++ = '\0';
-			while (isspace(*ch2)) ch2++;
+			while (isspace((*ch2) & 0x0ff)) ch2++;
 
 			ch3 = strchr(ch2, '#'); if (ch3) *ch3 = '\0';
 			ch3 = strchr(ch2, ';'); if (ch3) *ch3 = '\0';

@@ -9,7 +9,7 @@ OBJS=dict.o dictcfg.o logprintf.o
 all: libcdict.a
 
 libcdict.a: $(OBJS)
-	$(AR) rcu $@ $+
+	$(AR) rc $@ $+
 	$(RANLIB) $@
 
 clean:
